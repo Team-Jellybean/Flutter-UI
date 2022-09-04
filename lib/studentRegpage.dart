@@ -3,18 +3,17 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/widgets.dart';
-import 'package:ui_outline_1/loginpage.dart';
 
 import 'homepage.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class StudentRegisterPage extends StatefulWidget {
+  const StudentRegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<StudentRegisterPage> createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterPageState extends State<StudentRegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,36 +30,63 @@ class _RegisterPageState extends State<RegisterPage> {
                     fit: BoxFit.fill),
               ),
             ),
+            Padding(
+              padding: EdgeInsets.all(5),
+              child: TextButton(
+                onPressed: () => {Navigator.of(context).push(home())},
+                child: Icon(Icons.arrow_back),
+                style: TextButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                ),
+              ),
+            ),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Registration",
-                    style: TextStyle(
-                      fontSize: 40.0,
-                      fontFamily: 'Rubic',
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.5,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      //   CircleAvatar(
+                      //   child: Icon(Icons.man_rounded),
+                      // ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "Student Registration",
+                        style: TextStyle(
+                          fontSize: 35.0,
+                          fontFamily: 'Rubic',
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1.5,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      child: Divider(
+                        height: 30,
+                      )),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      "Enter your details below to register yourself as a student/mentee",
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontFamily: 'Quicksand',
+                        color: Colors.black54,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2.0,
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: 10.0,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Text(
-                      "Welcome! Please enter your details",
-                      style: TextStyle(
-                          fontSize: 16.0,
-                          fontFamily: 'Quicksand',
-                          color: Colors.black54,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 2.0),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 40.0,
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -74,7 +100,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: "RegNo/Employee ID",
+                            hintText: "Username",
                           ),
                         ),
                       ),
@@ -99,7 +125,28 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: "Username",
+                            hintText: "First Name",
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15.0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          border: Border.all(color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(10.0)),
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 20.0),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Last Name",
                           ),
                         ),
                       ),
@@ -176,7 +223,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: TextButton(
-                      onPressed: () => {Navigator.pushNamed(context, 'login')},
+                      onPressed: () => {Navigator.of(context).push(home())},
                       // padding: EdgeInsets.all(15),
                       // decoration: BoxDecoration(
                       //     color: Colors.indigo,
@@ -202,35 +249,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   SizedBox(
                     height: 10,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Already a member?",
-                        style: TextStyle(),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      TextButton(
-                        onPressed: (() =>
-                            {Navigator.of(context).push(login())}),
-                        child: Text(
-                          "Sign-in Now",
-                          style: TextStyle(
-                            color: Colors.indigo,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      )
-                      // Text(
-                      //   "Register Now",
-                      //   style: TextStyle(
-                      //     color: Colors.blue,
-                      //   ),
-                      // ),
-                    ],
-                  )
                 ],
               ),
             ),
@@ -241,9 +259,9 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 }
 
-Route login() {
+Route home() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => const LoginPage(),
+    pageBuilder: (context, animation, secondaryAnimation) => const HomePage(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(0.0, 1.0);
       const end = Offset.zero;
